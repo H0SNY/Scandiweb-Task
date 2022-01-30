@@ -1,0 +1,152 @@
+@import url('../../MainCss/MainVariables.css');
+.root {
+	margin: 70px;
+}
+
+.optionimgroot {
+	margin: 0px 0 30px 0;
+}
+
+.optionimg {
+	width: 70px;
+	height: auto;
+	cursor: pointer;
+}
+.mainimgroot {
+	margin: 0px 50px 0 50px;
+}
+.mainimg {
+	width: 356px;
+	height: auto;
+}
+
+.info {
+	font-size: var(--HEADER-FONT);
+	color: var(--BLACK);
+	margin-left: 30px;
+}
+
+.firstname {
+	font-weight: var(--HIGH-WEIGHT);
+}
+
+.restofname {
+	color: rgba(5, 5, 5, 1);
+	font-weight: 400;
+	position: relative;
+	bottom: 30px;
+}
+
+.attrname {
+	font-weight: 800;
+	font-size: var(--NORMAL-FONT);
+}
+
+.attritem {
+	width: 35px;
+	height: 35px;
+	color: var(--BLACK);
+	font-weight: var(--HIGH-WEIGHT);
+	border: solid black 1px;
+	font-size: 10px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+.imgsroot {
+	margin-top: 50px;
+}
+
+.attritem:hover {
+	background-color: rgba(200, 200, 200, 0.8);
+}
+
+.selected {
+	background-color: black;
+	color: aliceblue;
+}
+.selectedcolor {
+	border: solid black 3px;
+}
+
+.priceroot {
+	font-weight: bold;
+}
+
+.cartbutton {
+	background-color: #5ece7b;
+	border: none;
+	color: antiquewhite;
+	font-weight: bold;
+	width: 250px;
+	cursor: pointer;
+}
+
+.descroot {
+	height: 180px;
+}
+.desc {
+	font-size: var(--SMALL-FONT);
+	font-weight: bold;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 800px) {
+	.root {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.info {
+		margin-left: 0px;
+	}
+	.imgsroot {
+		flex-direction: row !important;
+	}
+	.descroot {
+		justify-content: center;
+		align-items: center;
+	}
+	.priceroot {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.header {
+		justify-content: center;
+		align-items: center;
+	}
+	.attrname {
+		font-size: 14px;
+	}
+	.optionimg {
+		margin-right: 10px;
+		width: 50px;
+		height: auto;
+	}
+	.mainimg {
+		width: 250px;
+		height: auto;
+	}
+	.attrname {
+	}
+	.attrsroot {
+		justify-content: center;
+		align-items: center;
+	}
+	.attrroot {
+		justify-content: center !important;
+		align-items: center !important;
+	}
+
+	.attritem {
+		width: 25px;
+		height: 25px;
+		font-size: 8px;
+	}
+	.desc {
+		font-size: var(--SMALL-FONT);
+	}
+}

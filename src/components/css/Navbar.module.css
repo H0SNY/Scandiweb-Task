@@ -1,0 +1,111 @@
+@import url('../../MainCss/MainVariables.css');
+
+p {
+	font-family: var(--RALEWAY);
+	text-transform: uppercase;
+}
+
+.link {
+	margin-left: 20px;
+	font-size: var(--NORMAL-FONT);
+	font-weight: 600;
+	color: var(--BLACK);
+	text-decoration: none;
+	background-color: transparent;
+	border: none;
+}
+
+.link:hover {
+	cursor: pointer;
+	border-bottom: solid 2px var(--GREEN);
+	color: var(--GREEN) !important;
+}
+
+.icon {
+	margin-top: 15px;
+}
+
+.control {
+	margin: 20px 50px 10px 0;
+}
+
+.menuroot {
+	position: absolute;
+}
+.downbutton {
+	background-color: var(--WHITE);
+	border: none;
+}
+.downbutton:hover {
+	cursor: pointer;
+}
+.svg {
+	width: 20px;
+	height: 20px;
+}
+.svgdown {
+	width: 10px;
+	height: 10px;
+	color: black;
+}
+.dollarroot {
+	position: relative;
+	right: 30px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.cartroot {
+	position: relative;
+	left: 30px;
+	cursor: pointer;
+}
+
+
+.menuroot{
+	max-height: 20px;
+}
+.menu {
+	font-size: var(--NORMAL-FONT);
+	font-weight: var(--HIGH-WEIGHT);
+	background-color: #ffff;
+	position: relative;
+	left: 10px;
+	top: 10px;
+	box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+	z-index: 10;
+}
+.currency {
+	width: 100%;
+	margin-top: 10px;
+}
+.currency:hover {
+	background-color: rgba(190, 190, 190, 0.5);
+	cursor: pointer;
+}
+.currency p {
+	padding: 5px 20px 5px 20px;
+	margin: 0;
+}
+
+.badge {
+	position: absolute;
+	border-radius: 50%;
+	color: var(--WHITE);
+	background-color: var(--BLACK);
+	font-weight: bold;
+	left: 15px;
+	bottom: 15px;
+	font-size: 8px;
+	 width: 15px;
+	height: 15px;
+}
+.badgetext{
+	color: white;
+}
+
+@media (max-width : 600px) {
+	.link {
+	font-size: 12px;
+}
+}
