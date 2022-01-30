@@ -18,12 +18,13 @@ export default class CartPreview extends React.Component {
 		this.handleControl = this.handleControl.bind(this);
 		this.handleSelectAttr = this.handleSelectAttr.bind(this);
 		this.renderImage = this.renderImage.bind(this);
-
+		
 		this.state = {
 			selected: 0,
 		};
 	}
 
+	
 	handleControl(type, id) {
 		return () => this.props.cartControl(type, id)();
 	}
