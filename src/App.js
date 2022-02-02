@@ -56,7 +56,7 @@ export default class App extends React.Component {
 		this.handleSelectAttr = this.handleSelectAttr.bind(this);
 		this.sortProducts = this.sortProducts.bind(this);
 	}
-
+	
 	async componentDidMount() {
 		window.addEventListener('resize', () => this.setState((prevState) => ({ ...prevState, windowSize: window.innerWidth })));
 		const { data: data1 } = await client.query({ query: LOAD_CATEGORIES });
@@ -215,9 +215,9 @@ export default class App extends React.Component {
 		return (
 			<div className="App" onClick={this.handleGlobalClick}>
 				{this.state.cartCollapsed ? (
-					<div className="overlay">
-						{' '}
-						<Cart  key = {Math.random() * 100000} selectAttr={this.handleSelectAttr} cartControl={this.handleCartControl} cart={this.state.cart} currency={this.state.currency} />{' '}
+					<div className='overlay'>
+
+						<Cart  key = {Math.random() * 100000} selectAttr={this.handleSelectAttr} cartControl={this.handleCartControl} cart={this.state.cart} currency={this.state.currency} />
 					</div>
 				) : (
 					''

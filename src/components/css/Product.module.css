@@ -149,4 +149,8 @@
 	.desc {
 		font-size: var(--SMALL-FONT);
 	}
+	.cartbuttonroot{
+		flex-direction : column;
+		align-items : center;
+	}
 }

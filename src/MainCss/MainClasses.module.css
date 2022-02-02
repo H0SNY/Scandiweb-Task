@@ -2,12 +2,28 @@
 .container{
 	display: flex;
 }
+.inline{
+	display : inline;
+}
+.block{
+	display : block;
+}
+.inline_block{
+	display : inline-block
+}
+.hide{
+	display : none;
+}
 .column{
 	flex-direction: column;
 }
 
-.start{
+.justify_start{
 	justify-content: start;
+	
+}
+.items_start{
+	align-items : start;
 }
 .end{
 	justify-content: end;
@@ -116,4 +132,81 @@
 }
 .ml_4{
 	margin-left: 40px;
+}
+.mw_1{
+	max-width : 2rem;
+}
+.mw_2{
+	max-width : 4rem;
+}
+.mw_3{
+	max-width : 6rem;
+}
+.mw_4{
+	max-width : 8rem;
+}
+.mw_5{
+	max-width : 12rem;
+}
+.mw_6{
+	max-width : 16rem;
+}
+.mw_7{
+	max-width : 18rem;
+}
+.mw_8{
+	max-width : 20rem;
+}
+.mw_9{
+	max-width : 25rem;
+}
+.mw_10{
+	max-width : 30rem;
+}
+
+
+.mh_1{
+	max-height : 2rem;
+}
+.mh_2{
+	max-height : 4rem;
+}
+.mh_3{
+	max-height : 6rem;
+}
+.mh_4{
+	max-height : 8rem;
+}
+.mh_5{
+	max-height : 12rem;
+}
+.mh_6{
+	max-height : 16rem;
+}
+.mh_7{
+	max-height : 18rem;
+}
+.mh_8{
+	max-height : 20rem;
+}
+.mh_9{
+	max-height : 25rem;
+}
+.mh_10{
+	max-height : 30rem;
+}
+
+.overflow_hidden{
+	overflow : hidden;
+}
+.overflow_auto{
+	overflow : auto;
+	 scroll-behavior: smooth;
+}
+.overflow_scroll{
+	overflow : scroll;
+	 scroll-behavior: smooth;
+}
+.overflow_visible{
+	overflow : visible;
 }

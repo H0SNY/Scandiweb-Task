@@ -24,7 +24,7 @@ export default class CareesoulHOC extends React.Component {
 
 	render() {
 		return (
-			<div className={`${mainClasses.container} ${classes.root}`}>
+			<div className={`${mainClasses.container} ${mainClasses.column} ${mainClasses.items_center} ${classes.root} ${mainClasses.justify_center}`}>
 				<div className={classes.component}>{this.props.components[this.state.selected]}</div>
 				<div className={`${classes.backbuttonroot}`}>
 					<button onClick={this.handleBack} className={`${classes.button}`}>

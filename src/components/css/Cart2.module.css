@@ -1,5 +1,6 @@
 @import url('../../MainCss/MainVariables.css');
 .root {
+	
 }
 
 .headerroot {
@@ -15,21 +16,22 @@
 	border-top: solid rgba(180, 180, 180) 1px;
 	margin: 0 20px 0 20px;
 	font-size: 20px;
+
+}
+.img_root{
+	position : relative;
 }
 .img {
-	width: 150px;
-	height: auto;
+	width: 10rem;
+	height : auto;
 }
 .productdesc {
-	position: relative;
-	bottom: 20px;
+	
 }
 .firstname {
 	font-weight: 700;
 }
 .restofname {
-	position: relative;
-	bottom: 10px;
 	font-weight: bold;
 }
 .mybag {
@@ -40,13 +42,11 @@
 .priceroot {
 	font-weight: 600;
 	height: 10px;
-	position: relative;
-	bottom: 15px;
 }
 .attritem {
 	position: relative;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	color: var(--BLACK);
 	font-weight: bold;
 	border: solid black 1px;
@@ -56,7 +56,7 @@
 }
 .attrsroot {
 	justify-content: start;
-	margin-top: 20px;
+	margin-top: 2rem;
 }
 .attrroot {
 	margin: 5px;
@@ -81,8 +81,8 @@
 }
 
 .controlbutton {
-	width: 25px;
-	height: 25px;
+	width: 40px;
+	height: 40px;
 	color: black;
 	background-color: var(--WHITE);
 	border: solid 1px var(--BLACK);
@@ -137,6 +137,19 @@
 	font-weight: bold;
 }
 
+.names{
+	text-align: center;
+	 column-gap : 1.0rem;
+}
+
+.names p , h4{
+	margin : 0;
+}
+
+.names p{
+	padding-top : 4px;
+}
+
 @media (max-width: 800px) {
 	.attrsroot {
 		justify-content: center;
@@ -151,8 +164,20 @@
 		font-size: 8px;
 	}
 	.attritem{
-		height: 24px;
-		width: 24px;
+		height: 18px;
+		width: 18px;
 		font-size: 8px;
 	}
+	.controlbutton{
+		width : 30px;
+		height : 30px;
+	}
+	.img{
+		width : 7rem; 
+		height :  auto;
+	}
+	.firstname , .restofname , .brand{
+		font-size : 1rem;
+	}
+	
 }
