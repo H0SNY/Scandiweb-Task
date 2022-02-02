@@ -2,23 +2,21 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { createSelected, getFirstNameAndLastName } from '../../__helpers__/product';
 import getCurrencySymbol from '../../assets/currencies';
-import { LOAD_PRODUCT } from '../../graphql/queries';
 import mainClasses from '../../MainCss/MainClasses.module.css';
 import classes from '../css/Product.module.css';
-import DomPurify from "dompurify"
-import DefaultImage from "../../assets/default.png"
+import DomPurify from 'dompurify';
+import DefaultImage from '../../assets/default.png';
 class Product extends React.Component {
 	constructor(props) {
 		super(props);
 		this.client = this.props.client;
 		this.id = this.props.match.params.id;
 		this.state = {
-			loading: true,
-			product: {},
-			mainImage: '',
-			selectedProduct: [],
+			product: this.props.location.state,
+			mainImage: this.props.location.state.gallery[0],
+			selectedProduct:createSelected(this.props.location.state.attributes),
 		};
-		this.myDesc = React.createRef()
+		this.myDesc = React.createRef();
 		this.renderImage = this.renderImage.bind(this);
 		this.renderAttribute = this.renderAttribute.bind(this);
 		this.renderAttributeItem = this.renderAttributeItem.bind(this);
@@ -28,17 +26,10 @@ class Product extends React.Component {
 		this.addToCart = this.addToCart.bind(this);
 	}
 
-	async componentDidMount() {
-		const { data } = await this.client.query({
-			query: LOAD_PRODUCT,
-			variables: {
-				productId: this.id,
-			},
-		});
-		const { product } = data;
-		const selected = createSelected(product.attributes);
-		this.setState((prevState) => ({ ...prevState, loading: false, product: product, mainImage: product?.gallery[0], selectedProduct: selected }));
-	}
+	// async componentDidMount() {
+		
+	// 	this.setState((prevState) => ({ ...prevState, loading: false, product: product, mainImage: product?.gallery[0], selectedProduct: selected }));
+	// }
 
 	handleImage(e) {
 		this.setState((prevState) => ({ ...prevState, mainImage: e.target.currentSrc }));
@@ -54,7 +45,6 @@ class Product extends React.Component {
 				}
 			}
 			this.setState((prevState) => ({ ...prevState, selectedProduct: selectedProduct }));
-			
 		};
 	}
 
@@ -76,7 +66,14 @@ class Product extends React.Component {
 	renderImage(src) {
 		return (
 			<div onClick={this.handleImage} className={`${mainClasses.container} ${classes.optionimgroot}`} key={src}>
-				<img className={classes.optionimg} alt="product" src={src} onError = {e => {e.currentTarget.setAttribute("src" , DefaultImage)}}/>
+				<img
+					className={classes.optionimg}
+					alt="product"
+					src={src}
+					onError={(e) => {
+						e.currentTarget.setAttribute('src', DefaultImage);
+					}}
+				/>
 			</div>
 		);
 	}
@@ -116,48 +113,49 @@ class Product extends React.Component {
 		const safeDesc = DomPurify.sanitize(description);
 		const [firstName, restOfName] = getFirstNameAndLastName(name);
 		return (
-			<>
-				{this.state.loading ? (
-					'loading......'
-				) : (
-					<div className={`${mainClasses.container} ${mainClasses.row} ${classes.root}`}>
-						<div className={`${mainClasses.container} ${mainClasses.column} ${classes.imgsroot}`}>{this.state.product?.gallery?.map(this.renderImage)}</div>
-						<div className={`${mainClasses.container} ${mainClasses.column} ${classes.mainimgroot}`}>
-							<img className={classes.mainimg} alt="main img" src={this.state.mainImage} onError = {e => {e.currentTarget.setAttribute("src" , DefaultImage)}} />
+			<div className={`${mainClasses.container} ${mainClasses.row} ${classes.root}`}>
+				<div className={`${mainClasses.container} ${mainClasses.column} ${classes.imgsroot}`}>{this.state.product?.gallery?.map(this.renderImage)}</div>
+				<div className={`${mainClasses.container} ${mainClasses.column} ${classes.mainimgroot}`}>
+					<img
+						className={classes.mainimg}
+						alt="main img"
+						src={this.state.mainImage}
+						onError={(e) => {
+							e.currentTarget.setAttribute('src', DefaultImage);
+						}}
+					/>
+				</div>
+				<div className={`${mainClasses.container} ${mainClasses.column} ${classes.info}`}>
+					<div className={`${mainClasses.container} ${mainClasses.column} ${classes.descroot}`}>
+						<div className={`${mainClasses.container} ${mainClasses.column}`}>
+							<p className={classes.firstname}>{firstName}</p>
 						</div>
-						<div className={`${mainClasses.container} ${mainClasses.column} ${classes.info}`}>
-							<div className={`${mainClasses.container} ${mainClasses.column} ${classes.descroot}`}>
-								<div className={`${mainClasses.container} ${mainClasses.column}`}>
-									<p className={classes.firstname}>{firstName}</p>
-								</div>
-								{restOfName && restOfName?.length && (
-									<div className={`${mainClasses.container} ${mainClasses.column}`}>
-										<p className={classes.restofname}>{restOfName}</p>
-									</div>
-								)}
+						{restOfName && restOfName?.length && (
+							<div className={`${mainClasses.container} ${mainClasses.column}`}>
+								<p className={classes.restofname}>{restOfName}</p>
 							</div>
-							<div className={`${mainClasses.container} ${mainClasses.column} ${classes.attrsroot}`}>{attributes.map(this.renderAttribute)}</div>
-							<div className={`${mainClasses.container} ${mainClasses.column} ${classes.priceroot}`}>
-								<p>{this.getPrice()}</p>
-							</div>
-
-							{inStock ? (
-								''
-							) : (
-								<div>
-									<p>This Item Is Not Available At The Moment</p>
-								</div>
-							)}
-							<div className={`${mainClasses.container} ${classes.cartbuttonroot}`}>
-								<button style={{ cursor: inStock ? 'pointer' : 'default' }} disabled={!inStock} onClick={this.addToCart} className={classes.cartbutton}>
-									<p>ADD TO CART</p>
-								</button>
-							</div>
-							<div className={classes.desc} dangerouslySetInnerHTML={{ __html: safeDesc }} />
-						</div>
+						)}
 					</div>
-				)}
-			</>
+					<div className={`${mainClasses.container} ${mainClasses.column} ${classes.attrsroot}`}>{attributes.map(this.renderAttribute)}</div>
+					<div className={`${mainClasses.container} ${mainClasses.column} ${classes.priceroot}`}>
+						<p>{this.getPrice()}</p>
+					</div>
+
+					{inStock ? (
+						''
+					) : (
+						<div>
+							<p>This Item Is Not Available At The Moment</p>
+						</div>
+					)}
+					<div className={`${mainClasses.container} ${classes.cartbuttonroot}`}>
+						<button style={{ cursor: inStock ? 'pointer' : 'default' }} disabled={!inStock} onClick={this.addToCart} className={classes.cartbutton}>
+							<p>ADD TO CART</p>
+						</button>
+					</div>
+					<div className={classes.desc} dangerouslySetInnerHTML={{ __html: safeDesc }} />
+				</div>
+			</div>
 		);
 	}
 }
